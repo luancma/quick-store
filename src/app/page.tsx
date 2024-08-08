@@ -4,13 +4,14 @@ import { Box, FormControlLabel, FormGroup, Stack, Typography } from '@mui/materi
 import styles from './page.module.css'
 import Checkbox from '@mui/material/Checkbox';
 import { getCategories } from '@/shared/data/categories';
+import { DrawerCart } from '@/shared/components/DrawerCart';
 
 interface HomeProps {
   products: ProductProps[];
 }
 
 async function getData(): Promise<HomeProps> {
-  const res = await fetch('https://dummyjson.com/products?limit=10&delay=3000', {
+  const res = await fetch('https://dummyjson.com/products?limit=10&delay=5000', {
     next: {
       revalidate: 60 * 60,
       tags: ['products']

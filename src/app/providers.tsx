@@ -7,6 +7,7 @@ import {
 } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ReactQueryStreamedHydration } from "@tanstack/react-query-next-experimental";
+import { DrawerCartProvider } from "@/shared/store/cartContext";
 
 function makeQueryClient() {
   return new QueryClient({
@@ -35,7 +36,9 @@ export function Providers(props: { children: React.ReactNode }) {
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryStreamedHydration>
-        {props.children}
+        <DrawerCartProvider>
+          {props.children}
+        </DrawerCartProvider>
       </ReactQueryStreamedHydration>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>

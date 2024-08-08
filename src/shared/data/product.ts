@@ -12,4 +12,5 @@ export interface ProductProps {
   stock: number;
   rating: number;
   images: string[];
+  thumbnail: string;
 }

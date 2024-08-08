@@ -3,6 +3,7 @@ import { Box, Container } from "@mui/material";
 import "./globals.css";
 import AppBarComponent from "@/shared/components/AppBar";
 import { Providers } from "./providers";
+import { DrawerCart } from "@/shared/components/DrawerCart";
 
 export default function RootLayout({
   children,
@@ -16,6 +17,7 @@ export default function RootLayout({
           <AppBarComponent />
           <Box m={"auto"} maxWidth={1400}>
             {children}
+            <DrawerCart />
           </Box>
         </Providers>
       </body>

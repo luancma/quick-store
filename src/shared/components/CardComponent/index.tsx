@@ -1,3 +1,4 @@
+'use client'
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -8,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import { ProductProps } from '@/shared/data/product';
 import { Box, Rating, Stack } from '@mui/material';
 import Image from 'next/image';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { useRouter } from 'next/navigation'
 
 export function CardComponent({
   id,
@@ -25,9 +26,14 @@ export function CardComponent({
   rating,
   images,
 }: Partial<ProductProps>) {
+  const router = useRouter()
+
+  const handleOpenProductDetails = () => {
+    router.push(`/details/${id}`)
+  }
   return (
     <Card sx={{ width: "100%", display: 'flex', flexDirection: 'column', justifyContent: "space-between" }}>
-      <Stack>
+      <Stack onClick={handleOpenProductDetails}>
         <Box sx={{ position: 'relative', aspectRatio: "4/4" }}>
           <Image
             fill
@@ -53,11 +59,7 @@ export function CardComponent({
           </Typography>
         </CardContent>
       </Stack>
-      <CardActions disableSpacing >
-        <Button variant="outlined" startIcon={<AddShoppingCartIcon />}>
-          Add to cart
-        </Button>
-      </CardActions>
+    
     </Card>
   );
 }
