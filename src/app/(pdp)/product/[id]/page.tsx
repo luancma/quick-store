@@ -2,9 +2,20 @@ import { Box, Button, FormControl, IconButton, InputLabel, Rating, Stack, TextFi
 import { getProductDetails } from "../data/getProductDetails";
 import Image from "next/image";
 import { ClientComponent } from "./ClientComponent";
+import { ProductProps } from "@/shared/data/product";
 
 
-export default async function Page({ params }: { params: { id: string } }) {
+export async function generateStaticParams() {
+  const response = await fetch('https://dummyjson.com/products?limit=10&delay=5000')
+  const { products } = await response.json()
+  const params = products.map((product: ProductProps) => ({
+    id: `${product.id}`,
+  }))
+  return params
+}
+
+
+export default async function Page({ params }: { params: { id: number } }) {
   const product = await getProductDetails({ id: params.id });
 
   return (

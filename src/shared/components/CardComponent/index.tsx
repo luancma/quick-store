@@ -14,23 +14,17 @@ import { useRouter } from 'next/navigation'
 export function CardComponent({
   id,
   title,
-  description,
-  category,
   price,
-  image,
-  sku,
   brand,
-  availabilityStatus,
-  discountPercentage,
-  stock,
   rating,
   images,
 }: Partial<ProductProps>) {
   const router = useRouter()
 
   const handleOpenProductDetails = () => {
-    router.push(`/details/${id}`)
+    router.push(`/product/${id}`)
   }
+  
   return (
     <Card sx={{ width: "100%", display: 'flex', flexDirection: 'column', justifyContent: "space-between" }}>
       <Stack onClick={handleOpenProductDetails}>
@@ -59,7 +53,6 @@ export function CardComponent({
           </Typography>
         </CardContent>
       </Stack>
-    
     </Card>
   );
 }
