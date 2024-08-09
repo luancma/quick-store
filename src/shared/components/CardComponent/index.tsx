@@ -1,10 +1,6 @@
-'use client'
 import * as React from 'react';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { ProductProps } from '@/shared/data/product';
 import { Box, Rating, Stack } from '@mui/material';
@@ -12,28 +8,15 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation'
 
 export function CardComponent({
-  id,
   title,
-  description,
-  category,
   price,
-  image,
-  sku,
   brand,
-  availabilityStatus,
-  discountPercentage,
-  stock,
   rating,
   images,
 }: Partial<ProductProps>) {
-  const router = useRouter()
-
-  const handleOpenProductDetails = () => {
-    router.push(`/details/${id}`)
-  }
   return (
     <Card sx={{ width: "100%", display: 'flex', flexDirection: 'column', justifyContent: "space-between" }}>
-      <Stack onClick={handleOpenProductDetails}>
+      <Stack>
         <Box sx={{ position: 'relative', aspectRatio: "4/4" }}>
           <Image
             fill
